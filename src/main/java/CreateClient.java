@@ -9,6 +9,7 @@ public final class CreateClient {
         apiClient.setUser("nikisun@xm.wonder.com");
 //        apiClient.setPassword("vr2OPRSU4X6K3.ErUqCE-fv5qP4hCO6hCRGGjk53J");
         apiClient.setPassword("Chance0830");
+        System.out.println("apiClient = " + apiClient);
     }
 
     private static class ClassHolder{
