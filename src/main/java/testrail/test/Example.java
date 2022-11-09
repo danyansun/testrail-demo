@@ -1,6 +1,9 @@
+package testrail.test;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import testrail.APIException;
+import testrail.CreateClient;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -9,7 +12,7 @@ import java.util.Map;
 /**
  * @author niki
  */
-public class example1 {
+public class Example {
 
     public static void main(String[] args) throws APIException, IOException {
 //        addProject();

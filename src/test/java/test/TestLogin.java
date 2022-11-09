@@ -31,6 +31,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 /**
  * @author niki
@@ -38,7 +39,7 @@ import java.io.IOException;
 
 @Epic("this is a test for user login")
 @Story("this is a test story")
-public class testLogin {
+public class TestLogin {
     private static final String LOGIN = "login_button_on_welcome_page";
     private static final String PHONE_INPUT = "phone_input_on_login_page";
     private static final String LOGIN_WITH_EMAIL = "login_with_email_on_login_page";
@@ -152,7 +153,10 @@ public class testLogin {
 
     private void takeScreenshot(String name) {
         File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        String savePath = "build/allure-results/attachments/";
+//        String savePath = "build/allure-results/attachments/";
+        Properties properties = new Properties();
+        String savePath = properties.getProperty("allure.results.directory", "allure-results/");
+
         File targetFle = new File(savePath + name + ".jpg");
         try {
             FileUtils.copyFile(file, targetFle);
@@ -180,7 +184,7 @@ public class testLogin {
         if (driver != null) {
 //            driver.terminateApp(SysProperties.BUNDLE_ID);
             driver.removeApp(SysProperties.BUNDLE_ID);
-            driver.quit();
+//            driver.quit();
         }
     }
 }
