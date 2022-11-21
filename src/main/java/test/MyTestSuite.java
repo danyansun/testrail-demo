@@ -9,4 +9,5 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({TestAssert.class})
 public class MyTestSuite {
+
 }

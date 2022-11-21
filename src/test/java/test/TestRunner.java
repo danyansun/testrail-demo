@@ -14,7 +14,7 @@ public class TestRunner {
 //        AllureJunit4 allureListener = new AllureJunit4();
         JUnitCore jUnitCore = new JUnitCore();
         jUnitCore.addListener(new AllureJunit4());
-        Result result = jUnitCore.run(TestAssert1.class);
+        Result result = jUnitCore.run(TestAssert1.class, TestAssert.class);
         System.out.println("result.getRunTime() = " + result.getRunTime());
         for (Failure failure : result.getFailures()) {
             System.out.println("failure.toString() = " + failure.toString());

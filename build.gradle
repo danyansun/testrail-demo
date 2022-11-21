@@ -16,26 +16,11 @@ plugins {
     id "io.qameta.allure" version "2.11.2"
 }
 
-//sourceSets {
-//    main {
-//        java {
-//            srcDirs = ["src/main/test"]
-//        }
-//    }
-//}
-
-//application {
-//    // Define the main class for the application.
-//    mainClass = 'com.example.App'
-//}
-
 test {
-//    useJUnit {
-//    }
+    useJUnit {
+    }
 
-//    systemProperties System.properties
 }
-
 
 repositories {
     mavenCentral()
@@ -45,27 +30,12 @@ dependencies {
     implementation group: 'io.appium', name: 'java-client', version: '7.5.1'
     implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
     implementation group: 'commons-io', name: 'commons-io', version: '2.8.0'
-
+    testImplementation('org.aspectj:aspectjweaver:1.9.9.1')
 }
 
-
-task printSourceSetInformation(){
-
-    doLast{
-        sourceSets.each { srcSet ->
-            println "["+srcSet.name+"]"
-            print "-->Source directories: "+srcSet.allJava.srcDirs+"\n"
-            print "-->Output directories: "+srcSet.output.classesDirs.files+"\n"
-            print "-->Compile classpath:\n"
-            srcSet.compileClasspath.files.each {
-                print "  "+it.path+"\n"
-            }
-            println ""
-        }
-    }
+application {
+    mainClass = 'test.TestRunner'
 }
-
-
 
 //===============Junit 5
 
