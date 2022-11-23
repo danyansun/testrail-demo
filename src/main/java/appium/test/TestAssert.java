@@ -1,4 +1,4 @@
-package test;
+package appium.test;
 
 import io.qameta.allure.Step;
 import org.junit.Test;

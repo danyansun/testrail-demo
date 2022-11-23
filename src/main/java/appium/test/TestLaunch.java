@@ -1,4 +1,4 @@
-package test;
+package appium.test;
 
 import appium.DriverInstance;
 import appium.SysProperties;
@@ -12,6 +12,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;
 import io.qameta.allure.junit4.DisplayName;
+import io.qameta.allure.util.PropertiesUtils;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -52,7 +53,7 @@ public class TestLaunch {
         driver.activateApp(SysProperties.BUNDLE_ID);
     }
 
-    //@Test
+    //    @Test
     @Test
     @DisplayName("launch app")
     @Description("app launch test")
@@ -89,11 +90,11 @@ public class TestLaunch {
 
     }
 
-    private void takeScreenshot(String name) {
+    private void    takeScreenshot(String name) {
         File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        Properties properties = new Properties();
-        String savePath = properties.getProperty("allure.results.directory", "allure-results/");
-        File targetFle = new File(savePath + name + ".jpg");
+        Properties properties = PropertiesUtils.loadAllureProperties();
+        String savePath = properties.getProperty("allure.results.directory", "allure-results");
+        File targetFle = new File(savePath + "/" + name + ".jpg");
         try {
             FileUtils.copyFile(file, targetFle);
             Allure.addAttachment("My attachment", FileUtils.openInputStream(file));

@@ -1,7 +1,5 @@
-package test;
+package appium;
 
-import appium.DriverInstance;
-import appium.SysProperties;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
@@ -12,6 +10,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;
 import io.qameta.allure.junit4.DisplayName;
+import io.qameta.allure.util.PropertiesUtils;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -25,6 +24,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Properties;
 
 /**
  * @author niki
@@ -51,7 +51,7 @@ public class TestLaunch {
         driver.activateApp(SysProperties.BUNDLE_ID);
     }
 
-    //    @Test
+    //@Test
     @Test
     @DisplayName("launch app")
     @Description("app launch test")
@@ -90,8 +90,9 @@ public class TestLaunch {
 
     private void takeScreenshot(String name) {
         File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        String savePath = "build/allure-results/attachments/";
-        File targetFle = new File(savePath + name + ".jpg");
+        Properties properties = PropertiesUtils.loadAllureProperties();
+        String savePath = properties.getProperty("allure.results.directory", "allure-results");
+        File targetFle = new File(savePath + "/" + name + ".jpg");
         try {
             FileUtils.copyFile(file, targetFle);
             Allure.addAttachment("My attachment", FileUtils.openInputStream(file));

@@ -1,4 +1,4 @@
-package test;
+package appium.test;
 
 import io.qameta.allure.junit4.AllureJunit4;
 import org.junit.runner.JUnitCore;
